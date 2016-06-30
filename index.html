@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+   <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+       <script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+       <script src="taxes.js" type="text/javascript"></script>
+   </head>
+   <body>
+       <form>
+           <label for="salaire">Salaire Brut</label><input type="text" id="salaireBrut" name="salaireBrut">
+           <select id='genre'>
+               <option value="0">Femme</option>
+               <option value ="1">Homme</option>
+           </select>
+           <label for="nb_enfants">Nombre d'enfants</label>
+           <select id="nb_enfants">
+               <option value="0">0</option>
+               <option value="0">1</option>
+               <option value="0">2</option>
+               <option value="3">3</option>
+               <option value="4">4 ou plus</option>
+           </select>
+           <a href="#" class="btn btn-info" id="validation">Valider</a>
+       </form>
+       <script>
+            $(document).ready(function(){
+                $('#validation').click(function(){
+                    var ctaxe = new Taxe;
+                    ctaxe.salaireBrut = $('#salaireBrut').val();
+                    ctaxe.nb_enfants = $('#nb_enfants').val();
+                    ctaxe.genre = $('#genre').val();
+                    ctaxe.CalculFraisTotaux();
+                    ctaxe.CalculSalaireNet();
+                    alert(ctaxe.salaire_Net); 
+                });
+            });
+       </script>
+   </body>
+
+</html>
